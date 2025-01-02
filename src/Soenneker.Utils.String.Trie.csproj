@@ -14,7 +14,7 @@
         <AssemblyName>Soenneker.Utils.String.Trie</AssemblyName>
         <PackageId>Soenneker.Utils.String.Trie</PackageId>
         <PackageTags>utils string trie prefix tree similarity triesimilaritystringutil util csharp dotnet c# .net</PackageTags>
-        <Copyright>Copyright © 2024 Jake Soenneker</Copyright>
+        <Copyright>Copyright © 2024-2025 Jake Soenneker</Copyright>
         <Authors>Jake Soenneker</Authors>
         <Company>https://soenneker.com</Company>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
