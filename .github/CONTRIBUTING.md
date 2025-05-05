@@ -1,4 +1,4 @@
-# Contributing to Soenneker.Utils.String.Trie
+﻿# Contributing to Soenneker.Utils.String.Trie
 
 We're excited that you're interested in contributing!
 
