@@ -1,14 +1,13 @@
-using Soenneker.Tests.FixturedUnit;
-using Xunit;
+using Soenneker.Tests.HostedUnit;
 
 using AwesomeAssertions;
 
 namespace Soenneker.Utils.String.Trie.Tests;
 
-[Collection("Collection")]
-public class TrieSimilarityStringUtilTests : FixturedUnitTest
+[ClassDataSource<Host>(Shared = SharedType.PerTestSession)]
+public class TrieSimilarityStringUtilTests : HostedUnitTest
 {
-    public TrieSimilarityStringUtilTests(Fixture fixture, ITestOutputHelper output) : base(fixture, output)
+    public TrieSimilarityStringUtilTests(Host host) : base(host)
     {
     }
 
