@@ -20,10 +20,11 @@ public static class TrieSimilarityStringUtil
         if (s1 == s2)
             return 1;
 
-        var trie = new Trie();
-        trie.Insert(s1);
+        int commonPrefixLength = 0;
+        int comparableLength = Math.Min(s1.Length, s2.Length);
 
-        int commonPrefixLength = trie.GetCommonPrefixLength(s2);
+        while (commonPrefixLength < comparableLength && s1[commonPrefixLength] == s2[commonPrefixLength])
+            commonPrefixLength++;
 
         int maxLength = Math.Max(s1.Length, s2.Length);
         double similarityPercentage = (double)commonPrefixLength / maxLength;
