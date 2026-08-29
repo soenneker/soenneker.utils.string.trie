@@ -9,11 +9,11 @@ namespace Soenneker.Utils.String.Trie;
 public static class TrieSimilarityStringUtil
 {
     /// <summary>
-    /// Executes the calculate similarity operation.
+    /// Calculates normalized trie-based string similarity on a zero-to-one scale.
     /// </summary>
-    /// <param name="s1">The s1.</param>
-    /// <param name="s2">The s2.</param>
-    /// <returns>The result of the operation.</returns>
+    /// <param name="s1">The first string.</param>
+    /// <param name="s2">The second string.</param>
+    /// <returns>A score from 0 to 1.</returns>
     [Pure]
     public static double CalculateSimilarity(string s1, string s2)
     {
@@ -33,11 +33,11 @@ public static class TrieSimilarityStringUtil
     }
 
     /// <summary>
-    /// Executes the calculate similarity percentage operation.
+    /// Calculates trie-based string similarity as a percentage.
     /// </summary>
-    /// <param name="s1">The s1.</param>
-    /// <param name="s2">The s2.</param>
-    /// <returns>The result of the operation.</returns>
+    /// <param name="s1">The first string.</param>
+    /// <param name="s2">The second string.</param>
+    /// <returns>A percentage from 0 to 100.</returns>
     [Pure]
     public static double CalculateSimilarityPercentage(string s1, string s2)
     {
