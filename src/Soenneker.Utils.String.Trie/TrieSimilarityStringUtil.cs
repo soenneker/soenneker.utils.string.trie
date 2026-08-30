@@ -4,7 +4,7 @@ using System.Diagnostics.Contracts;
 namespace Soenneker.Utils.String.Trie;
 
 /// <summary>
-/// A utility library for comparing strings via trie (prefix tree) similarity
+/// Compares strings by the length of their common leading prefix.
 /// </summary>
 public static class TrieSimilarityStringUtil
 {

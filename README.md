@@ -4,30 +4,43 @@
 [![](https://img.shields.io/github/actions/workflow/status/soenneker/soenneker.utils.string.trie/codeql.yml?label=CodeQL&style=for-the-badge)](https://github.com/soenneker/soenneker.utils.string.trie/actions/workflows/codeql.yml)
 
 # ![](https://user-images.githubusercontent.com/4441470/224455560-91ed3ee7-f510-4041-a8d2-3fc093025112.png) Soenneker.Utils.String.Trie
-### A utility library for comparing strings via trie (prefix tree) similarity
+Common-prefix similarity for strings, normalized by the longer input length.
 
 ## Installation
 
-```
+```bash
 dotnet add package Soenneker.Utils.String.Trie
 ```
 
-## Why?
-Imagine you have two strings. Trie-based matching helps you figure out how similar they are by looking at the prefixes they share. Here's why it's handy:
-
-## Easy to Understand:
-Trie-based matching is straightforward. It helps identify common prefixes between two strings, providing an intuitive measure of similarity.
-
-## Not Bothered by Length:
-Whether a string is long or short doesn't throw off trie-based matching. It cares more about the common prefixes than the total length of the strings.
-
-## Efficient for Big Tasks:
-When you're dealing with lots of strings or large texts, trie-based matching is efficient. It quickly identifies common prefixes without getting bogged down by complicated calculations, making it a practical choice for large datasets.
-
 ## Usage
+
 ```csharp
+using Soenneker.Utils.String.Trie;
+
 string str1 = "hello";
 string str2 = "hell";
 
-double similarity = TrieStringSimilarityUtil.CalculateSimilarityPercentage(str1, str2); // 80
+double score = TrieSimilarityStringUtil.CalculateSimilarity(str1, str2);
+double percentage = TrieSimilarityStringUtil.CalculateSimilarityPercentage(str1, str2);
+
+// score == 0.8
+// percentage == 80
 ```
+
+The score is calculated as:
+
+```text
+common leading prefix length / length of the longer input
+```
+
+Only characters from the beginning of each string contribute. For example, `"prefix"` and `"pre"` score `0.5` because their three-character common prefix is divided by the longer length of six. Two identical strings, including two empty strings, return `1` (or `100%`).
+
+## Comparison rules
+
+- Comparison is case-sensitive.
+- Characters are compared as UTF-16 code units.
+- Whitespace and punctuation participate like any other character.
+- Characters after the first mismatch do not affect the common-prefix length, though they still affect the longer-input denominator.
+- Runtime is linear in the shorter input length and the method does not allocate a prefix tree.
+
+Call the static methods directly; no dependency-injection registration is required. Both arguments must be non-null. This metric is useful for prefix-oriented identifiers, paths, or labels; it is not a general semantic string similarity measure.
