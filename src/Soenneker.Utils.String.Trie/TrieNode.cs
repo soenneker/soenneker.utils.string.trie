@@ -2,7 +2,7 @@
 
 namespace Soenneker.Utils.String.Trie;
 
-internal class TrieNode
+internal sealed class TrieNode
 {
     public Dictionary<char, TrieNode> Children { get; set; }
 

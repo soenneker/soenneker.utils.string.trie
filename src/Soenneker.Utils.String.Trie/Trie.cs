@@ -1,6 +1,6 @@
 ﻿namespace Soenneker.Utils.String.Trie;
 
-internal class Trie
+internal sealed class Trie
 {
     private readonly TrieNode _root;
 
@@ -17,12 +17,13 @@ internal class Trie
         {
             char ch = word[i];
 
-            if (!currentNode.Children.ContainsKey(ch))
+            if (!currentNode.Children.TryGetValue(ch, out TrieNode? child))
             {
-                currentNode.Children[ch] = new TrieNode();
+                child = new TrieNode();
+                currentNode.Children.Add(ch, child);
             }
 
-            currentNode = currentNode.Children[ch];
+            currentNode = child;
         }
 
         currentNode.IsEndOfWord = true;
